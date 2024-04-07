@@ -25,7 +25,7 @@ class Log_File_Client:
     def write(self):
         with open(str(self.file_name), 'a',encoding='utf-8') as file:
             if 'keepalive' in self.get_text:
-                file.write(str(self.get_time) + " " + str(self.get_text) + "\n")
+                file.write(str(self.get_time) + "; " + str(self.get_text) + "; \n")
             else:
-                file.write(str(self.send_date) + " " + str(self.send_time) + " " + str(self.send_text) + " " + str(self.get_time) + " " +
-                           str(self.get_text) + "\n")
+                file.write(str(self.send_date) + "; " + str(self.send_time) + "; " + str(self.send_text) + "; " + str(self.get_time) + "; " +
+                           str(self.get_text) + "; \n")
