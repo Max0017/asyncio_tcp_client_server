@@ -26,7 +26,7 @@ async def send_message(host, port, log_file):
             # print(f"request sent to server: {message}")
             data = await reader.readline()
             response = data.decode().strip()
-            #print("alynan hat serverden ",response)
+            #print("get_message_server ",response)
             log.set_get_time(datetime.datetime.now().time())
             log.set_get_text(response)
 
@@ -55,7 +55,7 @@ async def send_message(host, port, log_file):
 async def main():
     SERVER_HOST = "127.0.0.1"
     SERVER_PORT = 12345
-    log_file = "client_log.txt"
+    log_file = "client_1_log.txt"
     await send_message(SERVER_HOST, SERVER_PORT, log_file)
 
 if __name__ == "__main__":

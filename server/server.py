@@ -33,8 +33,6 @@ async def client_writer(client_num, get_message, writer, res_num, ignor ):
         log.set_send_time(datetime.datetime.now().time())
         log.set_send_text(response)
         #print('Sent response to', addr, ':', response)
-    log.write()
-
 
 
 async def handle_client(reader, writer):
@@ -64,14 +62,15 @@ async def handle_client(reader, writer):
             await asyncio.sleep(random.uniform(0.1, 1))
             if client_num == 0:
                     await client_writer(client_num, data, writer, res_num1, ignor)
+                    log.write()
                     if ignor:
                         res_num1 += 1
 
             else:
                     await client_writer(client_num, data,  writer, res_num2,ignor)
+                    log.write()
                     if ignor:
                         res_num2 += 1
-
 
     except ConnectionResetError:
         print("ConnectionResetError occurred. Ignoring.")

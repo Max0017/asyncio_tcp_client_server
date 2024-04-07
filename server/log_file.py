@@ -27,10 +27,12 @@ class Log_file:
 
     def write(self):
         with open('server_db.txt', 'a',encoding='utf-8') as file:
-            if self.send_text is not None:
+            if self.send_text and self.send_time is not None:
                 if self.send_text == 'проигнорировано':
                     file.write(str(self.data) + " " + str(self.time) + " " + str(self.get_text) + " " + str(self.send_data) + " " +
                                str(self.send_time) + " " + str(self.send_text) + "\n")
-                file.write(str(self.data) + " " + str(self.time) + " " + str(self.get_text) + " " + str(self.send_data) + " " +
-                           str(self.send_time) + " " + str(self.send_text) + "\n")
+                else:
+                    if self.time:
+                        file.write(str(self.data) + " " + str(self.time) + " " + str(self.get_text) + " " + str(self.send_data) + " " +
+                                   str(self.send_time) + " " + str(self.send_text) + "\n")
 
